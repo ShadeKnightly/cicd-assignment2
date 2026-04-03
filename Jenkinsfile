@@ -1,16 +1,26 @@
 pipeline{
     agent any
+
+    tools{
+        nodejs 'Node20'
+    }
+
+    environment{
+        NETLIFY_SITE_ID = credentials('NETLIFY_SITE_ID')
+        NETLIFY_TOKEN = credentials('NETLIFY_TOKEN')
+    }
     stages{
         stage('Build'){
             steps{
                 echo 'Building the application...'
                 sh 'npm install'
+                sh 'npm run build'
             }
         }
         stage('Test'){
             steps{
                 echo 'Running tests...'
-                sh 'npm test'
+                sh 'npm test' -- --watchAll=false
             }
         }
         stage('Deploy'){
