@@ -3,11 +3,13 @@ function App() {
   return (
     <div>
         <h1>
-          TECH2102:Enterprise Computing
+          Heather-may Rebecca Howse
         </h1>
+        <p>
+          Enterprise Computing
+        </p>
     </div>
   );
 }
 
 export default App;
-
